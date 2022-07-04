@@ -1,6 +1,3 @@
-import json
-from logging import exception
-
 from behave import *
 from utils.GistsApiUtil import *
 from resources.Payloads import *
@@ -35,7 +32,7 @@ def step_impl(context, description, file_name, public, content):
 
 @then('I see the status code of {statuscode:d}')
 def step_impl(context, statuscode):
-    assert context.response.status_code == statuscode , context.response.status_code
+    assert context.response.status_code == statuscode, context.response.status_code
 
 
 @given('I have the update details with {update_description} and {update_filename} and {update_public} and '
@@ -108,3 +105,36 @@ def verify_id_list(gist_id_list, response):
 @given("I have invalid github auth credentials")
 def step_impl(context):
     context.session = initiate_invalid_session()
+
+
+@given('I take a gists id for user {user_id}')
+def step_impl(context, user_id):
+    context.response = send_get_gists_list_request(context.session, user_id)
+    context.gist_id_from_list = context.response.json()[0]['id']
+
+
+@when('I execute the GET gists api with GistS ID')
+def step_impl(context):
+    context.response = send_get_gists_request(context.session, context.gist_id_from_list)
+
+
+@then('I see the requested Gists ID')
+def step_impl(context):
+    assert context.response.json()[
+               'id'] == context.gist_id_from_list, "User should have the id " + context.gist_id_from_list
+
+
+@given('I have the gists update details with gistsID  {update_description} and {update_filename} and {update_public} '
+       'and {update_content}')
+def step_impl(context, update_description, update_filename, update_public, update_content):
+    update_description = update_description + "update"
+    update_filename = update_filename + "update"
+    update_content = update_content + "update"
+    context.update_payload = get_gists_update_payload_one(context.gist_id_from_list, update_description,
+                                                          update_filename,
+                                                          update_content)
+
+
+@when('I execute the UPDATE gists api with Gists ID')
+def step_impl(context):
+    context.response = send_update_request(context.session, context.gist_id_from_list, context.update_payload)

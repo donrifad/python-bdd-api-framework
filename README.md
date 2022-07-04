@@ -35,7 +35,9 @@ python --version
 ```
 pip install -r requirements.txt
 ```
-<br> Open the properties.ini file and provide your git user id,you can pass the token via command line or include in properties.ini file
+<br> Open the properties.ini file and provide your git user id,you can pass the token via command line or include in properties.ini file</br>
+<br>if you already python installed select or create new virtual environment freshly install all dependencies </br>
+<br>More about virtual env https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/26/python-virtual-env/ </br>
 
 ### important dependencies used ###
 <br>For api requests used  https://requests.readthedocs.io/en/latest/ </br>
@@ -79,7 +81,7 @@ pip install allure-behave
 * Execute the below command it will generate the folder called AllureReport in the root of your project, You can have any folder name.
 * This will generate few json files in the folder.
 ```
-behave features/tests/GistsBasicApi.feature --no-capture -D token=ghp_FLh3Fx0jFIY6p5Fo2B241gFJQnPdhDC3PfG7c  -f allure_behave.formatter:AllureFormatter -o AllureReport
+behave features/tests/GistsBasicApi.feature --no-capture -D token=ghp_FLh3Fx0jFIY6p5Fo2B241gFJQnPdhDC3PfG7c  -f allure_behave.formatter:AllureFormatter -o AllureReports
 ```
 * For generating the report using the json install the following
 ```
@@ -89,7 +91,7 @@ brew install allure || npm install -g allure-commandline
 allure --version
 ```
 * Let's generate the html report, navigate the allure report folder and execute
-* https://docs.qameta.io/allure/
+*  for more details https://docs.qameta.io/allure/
 ```
 mac : allure serve AllureReports
 ```

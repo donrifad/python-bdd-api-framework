@@ -17,18 +17,20 @@ Feature: Basic Api Functions ADD GET UPDATE DELETE
   @smoke
   Scenario: Get A Gists Using ID
     Given I have github auth credentials
-    When I execute the GET gists api with Gists ID 2a63dbfa9515944fdb2f01849303dd93
+    And I take a gists id for user donrifad
+    When I execute the GET gists api with Gists ID
     Then  I see the status code of 200
-    And I see the requested Gists ID 2a63dbfa9515944fdb2f01849303dd93
+    And I see the requested Gists ID
 
   @smoke
   Scenario Outline: Update A Gists Using ID
     Given I have github auth credentials
-    And I have the gists update details with gistsID  <description> and <filename> and <public> and <content> and <gists_id>
+    And I take a gists id for user donrifad
+    And I have the gists update details with gistsID  <description> and <filename> and <public> and <content>
     Examples:
-      | description         | filename  | public | content     |gists_id|
-      | Example of my gist2 | ReadMe.MD | false  | hello world |2a63dbfa9515944fdb2f01849303dd93|
-    When I execute the UPDATE gists api with Gists ID 2a63dbfa9515944fdb2f01849303dd93
+      | description         | filename  | public | content     |
+      | Example of my gist2 | ReadMe.MD | false  | hello world |
+    When I execute the UPDATE gists api with Gists ID
     Then  I see the status code of 200
 
 

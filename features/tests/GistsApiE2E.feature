@@ -1,7 +1,7 @@
 # Created by mohamedrifad at 7/3/22
 Feature: Verify Basic Api Functions [Add,Edit,Delete] of Gists
   # Adding new gists
-  # Update a the added gists
+  # Update  the added gists
   # Then delete the added gists and verify the e2e flow
 
   @regression
