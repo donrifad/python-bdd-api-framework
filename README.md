@@ -45,7 +45,7 @@ pip install -r requirements.txt
 <br>For reporting used allure report https://docs.qameta.io/allure/ </br>
 
 ## Execute the tests ##
-
+* To execute the tests on GistsBasicApi.feature provide your username in feature file
 1. Execute all the test cases:
 * navigate to project root folder
 * Generate your token from git

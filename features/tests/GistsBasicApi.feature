@@ -1,6 +1,8 @@
 # Created by mohamedrifad at 7/3/22
 Feature: Basic Api Functions ADD GET UPDATE DELETE
   # You should have a valid gist id
+  # provide your user name instead of <your_user_name>
+  # Test take an existing gists id uses
 
   @smoke @add
   Scenario Outline: Add A Gists
@@ -17,7 +19,7 @@ Feature: Basic Api Functions ADD GET UPDATE DELETE
   @smoke
   Scenario: Get A Gists Using ID
     Given I have github auth credentials
-    And I take a gists id for user donrifad
+    And I take a gists id for user your_user_name
     When I execute the GET gists api with Gists ID
     Then  I see the status code of 200
     And I see the requested Gists ID
@@ -25,7 +27,7 @@ Feature: Basic Api Functions ADD GET UPDATE DELETE
   @smoke
   Scenario Outline: Update A Gists Using ID
     Given I have github auth credentials
-    And I take a gists id for user donrifad
+    And I take a gists id for user your_user_name
     And I have the gists update details with gistsID  <description> and <filename> and <public> and <content>
     Examples:
       | description         | filename  | public | content     |
@@ -37,7 +39,7 @@ Feature: Basic Api Functions ADD GET UPDATE DELETE
   @smoke
   Scenario Outline: Get the Lists of Gists Using UserID
     Given I have github auth credentials
-    When I execute the GETLIST api with donrifad
+    When I execute the GETLIST api with your_user_name
     Then  I see the status code of 200
     Then I see the following Gist IDS <ID_List>
     Examples:
