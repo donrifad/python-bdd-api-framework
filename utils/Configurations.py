@@ -7,5 +7,15 @@ def get_config():
     return config
 
 
-def get_password():
-    return "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"
+def get_token():
+    # return os.getenv("GIT_API_TOKEN")
+    return get_config()["API"]["token"]
+
+
+def get_user():
+    # return os.getenv("GIT_API_TOKEN")
+    return get_config()["API"]["git_user"]
+
+
+def get_invalid_token():
+    return get_config()["API"]["invalid_token"]
