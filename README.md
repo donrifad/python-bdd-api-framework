@@ -4,7 +4,7 @@
 
 Project structure
 ```bash
-├── AllureReports       - For reporting 
+├── AllureReportss       - For reporting 
 ├── requirements.txt    - Contain all dependancies
 ├── features            - BDD framework files
 |  ├── environment.py   - BDD Hooks
